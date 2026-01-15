@@ -120,11 +120,11 @@
         speechSynthesis.speak(new SpeechSynthesisUtterance(await getWord(currentWord)))
      }
         function start() {
-        document.body.addEventListener("onKeyDown", (event) => {
-            if (event.key === "Enter") {
+        document.body.querySelector("form").addEventListener("submit", (event) => {
+       
                 event.preventDefault()
                 submit()
-            }
+            
         })
             details.innerHTML = "3 Strikes Remaining<br>0/45"
          sortedEasy = easyList.sort(() => Math.floor(Math.random() - 0.5))
