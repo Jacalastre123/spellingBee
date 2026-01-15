@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Bee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: gold;
+            font-family: open sans;
+            text-align: center;
+            
+        }
+
+        input {
+            height: 10vh;
+            width: 50vh;
+            font-size: 2em;
+            padding: 0;
+            
+        }
+        
+        button {
+        	background-color: white;
+            border: 2px solid black;
+            
+        }
+    </style>
+</head>
+<body>
+<h1>Spelling bee</h1>
+<h2 id="details"></h2>
+<h5 id="level">Easy Mode</h5>
+<dialog id="dial">
+    <h3>Welcome to spelling bee</h3>
+
+    <p>This spelling bee game only gets harder and harder. Lets see how far you will go. You will only have 3 strikes and 45 questions so good luck! </p>
+    <button onclick="start()">Start</button>
+</dialog>
+<form>
+    <input type="text" id="spelling" placeholder="Word here" autocapitalise="off" autocomplete="off" autofocus="off" spellcheck="off" autocorrect="off">
+</form>
+<button onclick="submit()">Submit</button>
+<button onclick="define()">Definition</button>
+<button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))">Repeat</button>
+
+<dialog id="dial2">
+    <h4 id="victor"></h4>
+    <meter value="3" min="0" max="40" id="meter">
+
+    </meter>
+    <p id="status"></p>
+    <button onclick="dial2.close();start()">Restart</button>
+</dialog>
+    <script>
+        const speech = new SpeechSynthesisUtterance("")
+        const spelling = document.getElementById("spelling")
+        const dial = document.getElementById("dial")
+         const details = document.getElementById("details")
+        const dial2 = document.getElementById("dial2")
+        const status = dial2.querySelector("#status")
+        const meter = dial2.querySelector("#meter")
+        const victor = dial2.querySelector("#victor")
+        const level = document.body.querySelector("#level")
+
+        dial.showModal()
+        let times;
+        let score = 0
+        let strikes = 3
+        let easyList = [
+            "dog", "cat", "place", "catch", "potato", "origin", "pass","listen", "like", "beard", "fear", "tear", "seen", "coconut", "charts", "links", "boat", "here", "rate", "helps", "peer", "paper", "grant", "first", "input", "seat" , "spent", "house"
+        ]
+
+        let notEasyList = [
+            "arrows", "character", "insane", "quarter", "slipper", "target", "research", "masking", "worldwide", "singing", "drumming", "scrolling", "lavish", "mystery", "childish", "railway", "today", "weirder", "germane", "season", "seasoning", "ocean", "pacific", "repeating", "prism", "morale", "flair", "reaching", "cherishing", "scheme", "icing", "planting", "precept", "epilogue"
+        ]
+
+        let medList = [
+            "parole", "charming", "essential", "international", "exclaimation", "obsessive", "photograph", "catalyst", "encouragement", "excavate", "elevate", "slipping", "recreational", "require", "requesting", "asking", "vocal", "invoke", "heretic", "convince", "motivation", "coordination", "installment", "critical", "mitochondria", "theorising", "preferring", "spaghetti", "factoid", "question", "brackets", "acceptable"
+        ]
+
+        let hardList = [
+            "complementary", "extremism", "aquaintance", "photographic", "reinbursement", "exquisite", "hazardous", "nationalise", "prologue", "reigonal", "excavation", "marooned", "interrogation", "quartz", "illustrate", "scanning", "fanatical", "collection", "statistic", "monarchy", "speaking", "discrete", "resignation", "constitutional", "liquidation", "bankruptcy", "establishment", "awakening", "chlorophyll", "realistic", "sponsorship", "contracted", "reprint", "catagorical", "numerical"
+        ]
+
+        let insaneList = [
+            "demagogue", "accessory", "cache", "synthesisor", "dilate", "cajole", "nomenclature", "nonchalant", "cantankerous", "organism", "affirming", "consultation", "immunisation", "improvisors", "antidisestablishmentarianism"
+        ]
+        details.innerHTML = easyList.length + notEasyList.length + medList.length + hardList.length + insaneList.length + " Words Currently!"
+        console.log()
+     let sortedEasy;
+     let sortedNotEasy;
+     let sortedMed;
+     let sortedHard;
+     let sortedInsane;
+    let currentWord;
+
+
+
+     async function getWord(word) {
+        const res = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + word)
+
+        const defTrue = await res.json();
+            return defTrue[0].meanings[0].definitions[0].definition
+     }
+
+     async function define(words) {
+        speechSynthesis.speak(new SpeechSynthesisUtterance(await getWord(currentWord)))
+     }
+        function start() {
+
+            details.innerHTML = "3 Strikes Remaining<br>0/45"
+         sortedEasy = easyList.sort(() => Math.floor(Math.random() - 0.5))
+        sortedNotEasy = notEasyList.sort(() => Math.floor(Math.random() - 0.5))
+        sortedMed = medList.sort(() => Math.floor(Math.random() - 0.5))
+        sortedHard = hardList.sort(() => Math.floor(Math.random() - 0.5))
+        sortedInsane = insaneList.sort(() => Math.floor(Math.random() - 0.5))
+            score = 0
+            times = -1
+            strikes = 3
+
+            times++
+            currentWord = sortedEasy[0]
+            const speech = new SpeechSynthesisUtterance(sortedEasy[0])
+    speechSynthesis.cancel()
+            speech.lang = "en-UK"
+            
+            speechSynthesis.speak(speech)
+            dial.close()
+        }
+    
+        function submit() {
+           speechSynthesis.cancel()
+            if (spelling.value.toLowerCase() === sortedEasy[score] && score < 10) {
+                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+              
+          currentWord = sortedEasy[score + 1]
+                speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))
+                  score++
+                  
+
+            }
+
+            else if ((spelling.value.toLowerCase() === sortedNotEasy[score - 10] && score < 20) || (spelling.value.toLowerCase() === sortedEasy[score] && score === 10)) {
+              currentWord = notEasyList[score - 10 + 1]
+                speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))
+                 score++
+                
+                  level.innerHTML = "Slightly Easy Mode"
+                  details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+                  document.body.style.backgroundColor = "rgb(189, 172, 28)"
+            }
+
+            else if ((spelling.value.toLowerCase() === sortedMed[score - 20] && score < 30)  || (spelling.value.toLowerCase() === sortedNotEasy[score - 10] && score === 20)) {
+ currentWord = sortedMed[score - 20 + 1]
+ details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+                speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))
+                          score++
+                  
+                  level.innerHTML = "Medium Mode"
+                  document.body.style.backgroundColor = "rgb(156, 114, 27)"
+            }
+
+            else if ((spelling.value.toLowerCase() === sortedHard[score - 30] && score < 40)  || (spelling.value.toLowerCase() === sortedMed[score - 20] && score === 30)) {
+                currentWord = sortedHard[score - 30 + 1]
+                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+                speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))
+            score++
+                
+                  level.innerHTML = "Hard Mode"
+                  document.body.style.backgroundColor = "#c96c3a"
+            }
+
+            else if ((spelling.value.toLowerCase() === sortedInsane[score - 40] && score <= 45) || (spelling.value.toLowerCase() === sortedHard[score - 35] && score === 40)) {
+            
+                if ((spelling.value.toLowerCase() === sortedInsane[score - 40] && score === 46) ) {
+
+            
+                speechSynthesis.speak(new SpeechSynthesisUtterance("Your the winner, now here is my speech, jf n wrogirwbfruhfwrbhejrf ner ikjerbgenrhgjobergerh bergjhrbgrtugrbguhdbtrugrhguerg brefug reygiruegbuf gnreufbrubig uryguirgbrhsd vfdurfghueid fbdfusdfgiufrdsuifdsbfusgrfrufhsdbf bsdh fvof rfbrfuhwbfwuefhw34fregbregrfw eu fhbwef uwehf bewwufehwf ue fybwefuewb. fewh fbfwefwne fwufbwd ihbgruithbgtugiegfgyrefhewfuewifewfefwuehfbwufbwnfehwjdnewifcuewfuywey. ghufb wuhfbrwuifewfhwibfuewbfwiuhfb ewufgwrfguwr v fgr vtry grwhgffbe wf ewiu f utgregiuer hgwei fewhfwegfiuwefewiu fig erg wreifgwefgiwf efrgftuwegfehuwfgewfewfg ewufg euw fgwffiewfi weufe jjdbhe vdv, thanks for listening to my speech! lalalala"))
+                dial2.showModal()
+                    victor.innerText = "You Won"
+                    meter.value = score
+                    status.innerHTML = "You beaten insane mode, I am proud of you!"
+                    level.innerHTML = "You Won!"
+                  document.body.style.backgroundColor = "lime"
+                  details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+            }
+            
+                else {
+                    currentWord = sortedInsane[score - 35 + 1]
+                speechSynthesis.speak(new SpeechSynthesisUtterance(sortedInsane[score - 30 + 1]))
+                 score++
+                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+            
+                level.innerHTML = "INSANE Mode"
+                  document.body.style.backgroundColor = "#b08989"
+            }
+            }
+            
+
+            
+
+                 else {
+                console.log("You lost")
+                strikes--
+
+                if (strikes === 0) {
+                    dial2.showModal()
+                    victor.innerText = "You Lost"
+                    meter.value = score
+                    if (score <= 10) {
+                        status.innerHTML = score + "/" + "45: You were up to Easy Mode"
+                    }
+                    else if (score <= 20) {
+                        status.innerHTML = score + "/" + "45: You were up to Less Easy Mode"
+                    }
+
+                    else if (score <= 30) {
+                        status.innerHTML = score + "/" + "45: You were up to Medium Mode"
+                    }
+
+                    else if (score <= 35) {
+                        status.innerHTML = score + "/" + "45: You were up to Hard Mode"
+                    }
+
+                    else if (score <= 40) {
+                        status.innerHTML = score + "/" + "45: You were up to Insane Mode"
+                    }
+                }
+            }
+
+           spelling.value= ""
+           details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/45"
+        }
+       
+           
+
+        
+
+    </script>
+</body>
+</html>
