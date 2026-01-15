@@ -28,6 +28,15 @@
             border: 2px solid black;
             
         }
+
+        meter {
+            width: 100%;
+        }
+        dialog {
+            border-radius: 10px;
+            padding: 5px;
+            
+        }
     </style>
 </head>
 <body>
@@ -37,7 +46,7 @@
 <dialog id="dial">
     <h3>Welcome to spelling bee</h3>
 
-    <p>This spelling bee game only gets harder and harder. Lets see how far you will go. You will only have 3 strikes and 45 questions so good luck! </p>
+    <p>This spelling bee game only gets harder and harder until you're in insane mode. Lets see how far you will go. You will only have 3 strikes and 45 questions so good luck! </p>
     <button onclick="start()">Start</button>
 </dialog>
 <form>
@@ -56,7 +65,7 @@
     <button onclick="dial2.close();start()">Restart</button>
 </dialog>
     <script>
-        const speech = new SpeechSynthesisUtterance("")
+       
         const spelling = document.getElementById("spelling")
         const dial = document.getElementById("dial")
          const details = document.getElementById("details")
@@ -179,7 +188,13 @@
                 if ((spelling.value.toLowerCase() === sortedInsane[score - 40] && score === 46) ) {
 
             
-                speechSynthesis.speak(new SpeechSynthesisUtterance("Your the winner, now here is my speech, jf n wrogirwbfruhfwrbhejrf ner ikjerbgenrhgjobergerh bergjhrbgrtugrbguhdbtrugrhguerg brefug reygiruegbuf gnreufbrubig uryguirgbrhsd vfdurfghueid fbdfusdfgiufrdsuifdsbfusgrfrufhsdbf bsdh fvof rfbrfuhwbfwuefhw34fregbregrfw eu fhbwef uwehf bewwufehwf ue fybwefuewb. fewh fbfwefwne fwufbwd ihbgruithbgtugiegfgyrefhewfuewifewfefwuehfbwufbwnfehwjdnewifcuewfuywey. ghufb wuhfbrwuifewfhwibfuewbfwiuhfb ewufgwrfguwr v fgr vtry grwhgffbe wf ewiu f utgregiuer hgwei fewhfwegfiuwefewiu fig erg wreifgwefgiwf efrgftuwegfehuwfgewfewfg ewufg euw fgwffiewfi weufe jjdbhe vdv, thanks for listening to my speech! lalalala"))
+                let speecho = speechSynthesis.speak(new SpeechSynthesisUtterance("Your the winner, now here is my speech, jf n wrogirwbfruhfwrbhejrf ner ikjerbgenrhgjobergerh bergjhrbgrtugrbguhdbtrugrhguerg brefug reygiruegbuf gnreufbrubig uryguirgbrhsd vfdurfghueid fbdfusdfgiufrdsuifdsbfusgrfrufhsdbf bsdh fvof rfbrfuhwbfwuefhw34fregbregrfw eu fhbwef uwehf bewwufehwf ue fybwefuewb. fewh fbfwefwne fwufbwd ihbgruithbgtugiegfgyrefhewfuewifewfefwuehfbwufbwnfehwjdnewifcuewfuywey. ghufb wuhfbrwuifewfhwibfuewbfwiuhfb ewufgwrfguwr v fgr vtry grwhgffbe wf ewiu f utgregiuer hgwei fewhfwegfiuwefewiu fig erg wreifgwefgiwf efrgftuwegfehuwfgewfewfg ewufg euw fgwffiewfi weufe jjdbhe vdv]"))
+                    speech.rate = 20
+                speecho = speechSynthesis.speak(new SpeechSynthesisUtterance("fmruferfieruferufgerofmxnfyerxmg8fiurmf98erfjfuef f rhfre hifreofververbfvrbervoeroverb vheir vberib veirv beiv ber veri voirb voeirhv eoriv boeiv eihv hiev heiv boivbhivhi hvbv biv biv biev byi3qui"))
+                    speecho.rate = 1
+
+                     speecho = speechSynthesis.speak(new SpeechSynthesisUtterance("Okay, that was too fast, well thats my speech! Thanks, lalalala"))
+                    
                 dial2.showModal()
                     victor.innerText = "You Won"
                     meter.value = score
