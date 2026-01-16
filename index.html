@@ -130,16 +130,17 @@
                 submit()
             
         })
+                score = 0
+            times = -1
+            strikes = 3
+                
             details.innerHTML = "3 Strikes Remaining<br>0/45"
          sortedEasy = easyList.sort(() => Math.floor(Math.random() - 0.5))
         sortedNotEasy = notEasyList.sort(() => Math.floor(Math.random() - 0.5))
         sortedMed = medList.sort(() => Math.floor(Math.random() - 0.5))
         sortedHard = hardList.sort(() => Math.floor(Math.random() - 0.5))
         sortedInsane = insaneList.sort(() => Math.floor(Math.random() - 0.5))
-            score = 0
-            times = -1
-            strikes = 3
-
+        
             times++
             currentWord = sortedEasy[0]
             const speech = new SpeechSynthesisUtterance(sortedEasy[0])
