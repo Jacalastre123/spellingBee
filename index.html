@@ -96,7 +96,7 @@
         ]
 
         let insaneList = [
-            "demagogue", "accessory", "cache", "synthesisor", "dilate", "cajole", "nomenclature", "nonchalant", "cantankerous", "organism", "affirming", "consultation", "immunisation", "improvisors", "antidisestablishmentarianism"
+            "accessory", "cache", "synthesisor", "dilate", "cajole", "nomenclature", "nonchalant", "cantankerous", "organism", "affirming", "consultation", "immunisation", "improvisors", "antidisestablishmentarianism"
         ]
         details.innerHTML = easyList.length + notEasyList.length + medList.length + hardList.length + insaneList.length + " Words Currently!"
         console.log()
@@ -144,6 +144,9 @@
             
             speechSynthesis.speak(speech)
             dial.close()
+
+            level.innerHTML = "Easy Mode"
+            document.body.style.backgroundColor = "yellow"
         }
     
         function submit() {
