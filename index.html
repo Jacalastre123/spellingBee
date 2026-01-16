@@ -156,7 +156,7 @@
         function submit() {
            speechSynthesis.cancel()
             if (spelling.value.toLowerCase() === sortedEasy[score] && score < 10) {
-                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/45"
               
           currentWord = sortedEasy[score + 1]
                 speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))
@@ -177,7 +177,7 @@
 
             else if ((spelling.value.toLowerCase() === sortedMed[score - 20] && score < 30)  || (spelling.value.toLowerCase() === sortedNotEasy[score - 10] && score === 20)) {
  currentWord = sortedMed[score - 20 + 1]
- details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+ details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/45"
                 speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))
                           score++
                   
@@ -187,7 +187,7 @@
 
             else if ((spelling.value.toLowerCase() === sortedHard[score - 30] && score < 40)  || (spelling.value.toLowerCase() === sortedMed[score - 20] && score === 30)) {
                 currentWord = sortedHard[score - 30 + 1]
-                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/45"
                 speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))
             score++
                 
@@ -195,9 +195,9 @@
                   document.body.style.backgroundColor = "#c96c3a"
             }
 
-            else if ((spelling.value.toLowerCase() === sortedInsane[score - 35] && score <= 45) || (spelling.value.toLowerCase() === sortedHard[score - 30] && score === 40)) {
+            else if ((spelling.value.toLowerCase() === sortedInsane[score - 40] && score <= 45) || (spelling.value.toLowerCase() === sortedHard[score - 30] && score === 40)) {
             
-                if ((spelling.value.toLowerCase() === sortedInsane[score - 35] && score === 45) ) {
+                if ((spelling.value.toLowerCase() === sortedInsane[score - 40] && score === 45) ) {
 
             
                 let speecho = speechSynthesis.speak(new SpeechSynthesisUtterance("Your the winner, now here is my speech, jf n wrogirwbfruhfwrbhejrf ner ikjerbgenrhgjobergerh bergjhrbgrtugrbguhdbtrugrhguerg brefug reygiruegbuf gnreufbrubig uryguirgbrhsd vfdurfghueid fbdfusdfgiufrdsuifdsbfusgrfrufhsdbf bsdh fvof rfbrfuhwbfwuefhw34fregbregrfw eu fhbwef uwehf bewwufehwf ue fybwefuewb. fewh fbfwefwne fwufbwd ihbgruithbgtugiegfgyrefhewfuewifewfefwuehfbwufbwnfehwjdnewifcuewfuywey. ghufb wuhfbrwuifewfhwibfuewbfwiuhfb ewufgwrfguwr v fgr vtry grwhgffbe wf ewiu f utgregiuer hgwei fewhfwegfiuwefewiu fig erg wreifgwefgiwf efrgftuwegfehuwfgewfewfg ewufg euw fgwffiewfi weufe jjdbhe vdv]"))
@@ -213,14 +213,14 @@
                     status.innerHTML = "You beaten insane mode, I am proud of you!"
                     level.innerHTML = "You Won!"
                   document.body.style.backgroundColor = "lime"
-                  details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+                  details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/45"
             }
             
                 else {
-                    currentWord = sortedInsane[score - 35 + 1]
+                    currentWord = sortedInsane[score - 40 + 1]
                 speechSynthesis.speak(new SpeechSynthesisUtterance(currentWord))
                  score++
-                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/46"
+                details.innerHTML = strikes + " Strikes Remaining<br>"+ score + "/45"
             
                 level.innerHTML = "INSANE Mode"
                   document.body.style.backgroundColor = "#b08989"
