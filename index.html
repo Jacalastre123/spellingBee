@@ -124,9 +124,9 @@
         speechSynthesis.speak(new SpeechSynthesisUtterance(await getWord(currentWord)))
      }
         function start() {
-                            score = 0
+        score = 0
             times = -1
-            strikes += 3
+            strikes = 3
                 
 
         document.body.querySelector("form").addEventListener("submit", (event) => {
