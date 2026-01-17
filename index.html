@@ -84,19 +84,19 @@
         let score = 0
         let strikes = 3
         let easyList = [
-            "dog", "cat", "place", "catch", "potato", "origin", "pass","listen", "like", "beard", "fear", "tear", "seen", "coconut", "charts", "links", "boat", "here", "rate", "helps", "peer", "paper", "grant", "first", "input", "seat" , "spent", "house", "icing", "cake", "place", "create", "heating", "country", "heat", "scrape", "web", "pair", "parts", "build", "chore", "cool", "cola"
+            "dog", "cat", "place", "catch", "potato", "origin", "pass","listen", "like", "beard", "fear", "tear", "seen", "coconut", "charts", "links", "boat", "here", "rate", "helps", "peer", "paper", "grant", "first", "input", "seat" , "spent", "house", "icing", "cake", "place", "create", "heating", "country", "heat", "scrape", "web", "pair", "parts", "build", "chore", "cool", "cola", "here", "kind", "raise", "slips", 
         ]
 
         let notEasyList = [
-            "arrows", "character", "insane", "quarter", "slipper", "target", "research", "masking", "worldwide", "singing", "drumming", "scrolling", "lavish", "mystery", "childish", "railway", "today", "weirder", "germane", "season", "seasoning", "ocean", "pacific", "repeating", "prism", "morale", "flair", "reaching", "cherishing", "scheme", "icing", "planting", "precept", "epilogue", "galaxy", "placements", "glass", "plaque", "divine", "science", "fiction", "allusion", "concrete", "skeletal", "breathe", "audio", "activism", "increment", "explaing", "dimension", "configure", "imperfect", "perfecting", "exchanges", "blossom", "showcase", "replays", "recording", "expansion", "bypass", "codec", "coder", "comprehend", "achieve", "striving", "condition", "metaphor", "diploma", "graduate", "subjects", "vacation", "revoke"
+            "arrows", "character", "insane", "quarter", "slipper", "target", "research", "masking", "worldwide", "singing", "drumming", "scrolling", "lavish", "mystery", "childish", "railway", "today", "weirder", "germane", "season", "seasoning", "ocean", "pacific", "repeating", "prism", "morale", "flair", "reaching", "cherishing", "scheme", "icing", "planting", "precept", "epilogue", "galaxy", "placements", "glass", "plaque", "divine", "science", "fiction", "allusion", "concrete", "skeletal", "breathe", "audio", "activism", "increment", "explaing", "dimension", "configure", "imperfect", "perfecting", "exchanges", "blossom", "showcase", "replays", "recording", "expansion", "bypass", "codec", "coder", "comprehend", "achieve", "striving", "condition", "metaphor", "diploma", "graduate", "subjects", "vacation", "revoke", "carnage", "movie", "video", "refills", "studious", "rocket", "blasting", "pliers", "leaflets", "intensity", "describe", "vigorous", "rhyme"
         ]
 
         let medList = [
-            "parole", "charming", "essential", "international", "exclamation", "obsessive", "photograph", "catalyst", "encouragement", "excavate", "elevate", "slipping", "recreational", "require", "requesting", "asking", "vocal", "invoke", "heretic", "convince", "motivation", "coordination", "installment", "critical", "mitochondria", "theorising", "preferring", "spaghetti", "factoid", "question", "brackets", "acceptable", "national", "implementing", "compensation", "enlightenment", "utopian", "custom", "consumerism", "deactivation", "activate", "automate", "weakening", "strength", "guidance", "audience", "extrusive", "reintroduce", "elemental", "periodical", "studious", "coolant", "resolution", "technicality", "editorial", "factorial", "arithmetic", "intergration", "oxymoron", "possible", "replication", "represents"
+            "parole", "charming", "essential", "international", "exclamation", "obsessive", "photograph", "catalyst", "encouragement", "excavate", "elevate", "slipping", "recreational", "require", "requesting", "asking", "vocal", "invoke", "heretic", "convince", "motivation", "coordination", "installment", "critical", "mitochondria", "theorising", "preferring", "spaghetti", "factoid", "question", "brackets", "acceptable", "national", "implementing", "compensation", "enlightenment", "utopian", "custom", "consumerism", "deactivation", "activate", "automate", "weakening", "strength", "guidance", "audience", "extrusive", "reintroduce", "elemental", "periodical", "studious", "coolant", "resolution", "technicality", "editorial", "factorial", "arithmetic", "intergration", "oxymoron", "possible", "replication", "represents", "pretense", "oxymoron", "oxygen", "hydrogen", "carbon", "periodic", "reality", "proceed", "implanting", "predefined", "redefined", "invention", "innovation", "reigonal", "metric", "imperial", "contintents", "rythmic",
         ]
 
         let hardList = [
-            "complementary", "extremism", "aquaintance", "photographic", "reinbursement", "exquisite", "hazardous", "nationalise", "prologue", "reigonal", "excavation", "marooned", "interrogation", "quartz", "illustrate", "scanning", "fanatical", "collection", "statistic", "monarchy", "speaking", "discrete", "resignation", "constitutional", "liquidation", "bankruptcy", "establishment", "awakening", "chlorophyll", "realistic", "sponsorship", "contracted", "reprint", "categorical", "numerical", "heightened", "technicality", "referral", "nucleus", "proposition", "metropolis", "probiotics", "prejudice", "strengthening", "consequences", "biological", "imperfection", "perfection","opposition", "requirements", "covenant", "literature", "bereaucracy", "experimental", "inoculate", "educational", "scientific", "classical", "credential", "oversimnplify", "pathological", "irritation", "filliament"
+            "complementary", "extremism", "aquaintance", "photographic", "reinbursement", "exquisite", "hazardous", "nationalise", "prologue", "reigonal", "excavation", "marooned", "interrogation", "quartz", "illustrate", "scanning", "fanatical", "collection", "statistic", "monarchy", "speaking", "discrete", "resignation", "constitutional", "liquidation", "bankruptcy", "establishment", "awakening", "chlorophyll", "realistic", "sponsorship", "contracted", "reprint", "categorical", "numerical", "heightened", "technicality", "referral", "nucleus", "proposition", "metropolis", "probiotics", "prejudice", "strengthening", "consequences", "biological", "imperfection", "perfection","opposition", "requirements", "covenant", "literature", "bereaucracy", "experimental", "inoculate", "educational", "scientific", "classical", "credential", "oversimnplify", "pathological", "irritation", "filliament", "charisma", "simplifying", "refining", "refinery", "correction", "precedence", "preceeding", "magistrate", "kilometer"
         ]
 
         let insaneList = [
@@ -124,7 +124,7 @@
         speechSynthesis.speak(new SpeechSynthesisUtterance(await getWord(currentWord)))
      }
         function start() {
-        score = 0
+            score = 0
             times = -1
             strikes = 3
                 
@@ -138,15 +138,15 @@
               
                 
             details.innerHTML = "3 Strikes Remaining<br>0/45"
-         sortedEasy = easyList.sort(() => Math.floor(Math.random() - 0.5))
-        sortedNotEasy = notEasyList.sort(() => Math.floor(Math.random() - 0.5))
-        sortedMed = medList.sort(() => Math.floor(Math.random() - 0.5))
-        sortedHard = hardList.sort(() => Math.floor(Math.random() - 0.5))
-        sortedInsane = insaneList.sort(() => Math.floor(Math.random() - 0.5))
+         sortedEasy = easyList.sort(() => Math.random() - 0.5)
+        sortedNotEasy = notEasyList.sort(() =>Math.random() - 0.5)
+        sortedMed = medList.sort(() => Math.random() - 0.5)
+        sortedHard = hardList.sort(() => Math.random() - 0.5)
+        sortedInsane = insaneList.sort(() => Math.random() - 0.5)
         
             times++
             currentWord = sortedEasy[0]
-            const speech = new SpeechSynthesisUtterance(sortedEasy[0])
+            const speech = new SpeechSynthesisUtterance(currentWord)
     speechSynthesis.cancel()
             speech.lang = "en-UK"
             speechSynthesis.speak(speech)
