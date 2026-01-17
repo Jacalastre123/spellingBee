@@ -124,15 +124,18 @@
         speechSynthesis.speak(new SpeechSynthesisUtterance(await getWord(currentWord)))
      }
         function start() {
+                            score = 0
+            times = -1
+            strikes += 3
+                
+
         document.body.querySelector("form").addEventListener("submit", (event) => {
        
                 event.preventDefault()
                 submit()
             
         })
-                score = 0
-            times = -1
-            strikes = 3
+              
                 
             details.innerHTML = "3 Strikes Remaining<br>0/45"
          sortedEasy = easyList.sort(() => Math.floor(Math.random() - 0.5))
