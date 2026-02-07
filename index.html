@@ -65,6 +65,7 @@
 
     </meter>
     <p id="status"></p>
+    <p id="wordHere">The Word: </p>
     <button onclick="dial2.close();start()">Restart</button>
     
 </dialog>
@@ -78,6 +79,7 @@
         const meter = dial2.querySelector("#meter")
         const victor = dial2.querySelector("#victor")
         const level = document.body.querySelector("#level")
+        const wordHere = dial2.body.querySelector("#wordHere")
 
         dial.showModal()
         let times;
@@ -236,7 +238,7 @@
                  else {
                 console.log("You lost")
                 strikes--
-
+                
                 if (strikes === 0) {
                     dial2.showModal()
                     victor.innerText = "You Lost"
@@ -259,6 +261,7 @@
                     else if (score <= 40) {
                         status.innerHTML = score + "/" + "50: You were up to Insane Mode"
                     }
+                    wordHere.innerText = "The Word: " + currentWord
                 }
             }
 
